@@ -1,0 +1,12 @@
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+02_scripts/utils/wip/
+02_scripts/utils/04_estimate_plfs.R
+*.DS_Store
+*.ini
+*.dta
+*.txt
+*.xlsx
+.positai
