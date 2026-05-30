@@ -26,7 +26,7 @@ recode_plfs <- function(df) {
   
   sg_labels <- c("Scheduled Tribe" = 1, "Scheduled Caste" = 2, "Other Backward Classes" = 3, "Others" = 9)
   
-  sg_recoded_labels <- c("GC" = 1, "OBC" = 2, "SC" = 3, "ST" = 4)
+  sg_abv_labels <- c("ST" = 1, "SC" = 2, "OBC" = 3, "GC" = 4)
   
   relg_labels <- c("Hinduism" = 1, "Islam" = 2, "Christianity" = 3, "Sikhism" = 4, "Jainism" = 5,
                    "Buddhism" = 6, "Zoroastrianism" = 7, "Others" = 9)
@@ -200,8 +200,8 @@ recode_plfs <- function(df) {
       
       # social group
       sg = labelled(sg, labels = sg_labels),
-      sg_recoded = case_when(sg == 9 ~ 1, sg == 3 ~ 2, sg == 2 ~ 3, sg == 1 ~ 4),
-      sg_recoded = labelled(sg_recoded, labels = sg_recoded_labels),
+      sg_abv = case_when(sg == 1 ~ 1, sg == 2 ~ 2, sg == 3 ~ 3, sg == 9 ~ 4),
+      sg_abv = labelled(sg_abv, labels = sg_abv_labels),
       
       # religion
       relg = labelled(relg, labels = relg_labels),
@@ -313,7 +313,8 @@ recode_plfs <- function(df) {
       
       # occupation
       ocu_uas = case_when(idx_pas == 1 ~ ocu_pas, idx_sas == 1 ~ ocu_sas, T ~ NA),
-      nco2015_division_uas = labelled(as.numeric(str_sub(ocu_uas, end = 1)), labels = nco2015_division_labels),
+      # nco 2004 was used till 2020-21 - need harmonisation 
+      nco2015_division_uas = labelled(as.numeric(str_sub(ocu_uas, end = 1)), labels = nco2015_division_labels), 
       nco2015_division_pas = labelled(as.numeric(str_sub(ocu_pas, end = 1)), labels = nco2015_division_labels),
       nco2015_division_sas = labelled(as.numeric(str_sub(ocu_sas, end = 1)), labels = nco2015_division_labels),
       nco2015_division_cws = labelled(as.numeric(str_sub(ocu_cws, end = 1)), labels = nco2015_division_labels),
