@@ -146,7 +146,19 @@ plfs_list <- map(plfs_list, recode_plfs)
 
 iwalk(plfs_list, ~ {
   
-  write_parquet(.x, file.path("01_data/01_data_input/02_clean_data", paste0(.y, ".parquet")))
+  calendar_year_files <- paste0("plfs", 2022:2025)
+  
+  subfolder <- if (.y %in% calendar_year_files) {
+    
+    "calendar_year"
+    
+  } else {
+    
+    "agricultural_year"
+    
+  }
+  
+  write_parquet(.x, file.path("01_data/01_data_input/02_clean_data", subfolder, paste0(.y, ".parquet")))
   
 })
 
