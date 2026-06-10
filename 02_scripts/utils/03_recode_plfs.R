@@ -20,6 +20,13 @@ recode_plfs <- function(df) {
                     "Goa" = 30, "Lakshadweep" = 31, "Kerala" = 32, "Tamil Nadu" = 33, 
                     "Puduchery" = 34, "Andaman & Nicobar Island" = 35, "Telegana" = 36, "Ladakh" = 37)
   
+  state_abv_labels <- c("JK" = 1, "HP" = 2, "PB" = 3, "CH" = 4, "UK" = 5, "HR" = 6, "DL" = 7,
+                        "RJ" = 8, "UP" = 9, "BR" = 10, "SK" = 11, "AR" = 12, "NL" = 13, "MN" = 14,
+                        "MZ" = 15, "TR" = 16, "ML" = 17, "AS" = 18, "WB" = 19, "JH" = 20, "OD" = 21,
+                        "CG" = 22, "MP" = 23, "GJ" = 24, "DNDD" = 25, "MH" = 27, "AP" = 28,
+                        "KA" = 29, "GA" = 30, "LD" = 31, "KL" = 32, "TN" = 33, "PY" = 34,
+                        "AN" = 35, "TS" = 36, "LA" = 37)
+  
   ## individual characteristics ----
   
   sex_labels <- c("Male" = 1, "Female" = 2, "Transgender" = 3)
@@ -192,6 +199,7 @@ recode_plfs <- function(df) {
       # state
       st_recoded = case_when(st == 26 ~ 25, T ~ st),
       st_recoded = labelled(st_recoded, labels = state_labels),
+      st_abv_recoded = labelled(st_recoded, labels = state_abv_labels),
       
       ## individual characteristics ----
       
