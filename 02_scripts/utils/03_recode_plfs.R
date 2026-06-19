@@ -102,6 +102,8 @@ recode_plfs <- function(df) {
                    "10 and above but less than 20" = 3, "20 and above" = 4,
                    "Not Known" = 9)
   
+  infpp_labels = c("P&P in Agriculture" = 1, "P&P in Non-Agriculture" = 2, "Non-P&P in Agriculture" = 3, "Non-P&P in Non-Agriculture" = 4)
+  
   sectyp_labels = c("Organised Sector" = 1, "Unorganised Sector" = 2)
   
   form_emp_labels = c("Formal Employment" = 1, "Informal Employment" = 2)
@@ -360,12 +362,14 @@ recode_plfs <- function(df) {
                             !is.na(etyp_uas) & nic2008_section_uas == 1 ~ 3,
                             !is.na(etyp_uas) & nic2008_section_uas != 1 ~ 4,
                             T ~ NA),
+      infpp_uas = labelled(infpp_uas, labels = infpp_labels),
       
       infpp_pas = case_when(etyp_pas %in% c(1:4) & nic2008_section_pas == 1 ~ 1,
                             etyp_pas %in% c(1:4) & nic2008_section_pas != 1 ~ 2,
                             !is.na(etyp_pas) & nic2008_section_pas == 1 ~ 3,
                             !is.na(etyp_pas) & nic2008_section_pas != 1 ~ 4,
                             T ~ NA),
+      infpp_pas = labelled(infpp_pas, labels = infpp_labels),
       
       # organised sector - ILO definitions
       sectyp_uas = case_when(wf_uas == 1 & (etyp_uas %in% c(1:4, 19) | is.na(etyp_uas)) ~ 
