@@ -11,6 +11,20 @@ source("02_scripts/utils/01_read_plfs.R")
 source("02_scripts/utils/02_standardise_plfs.R")
 source("02_scripts/utils/03_recode_plfs.R")
 
+# unzipping raw data ----
+
+# optional - if the raw data files are already stored locally in the 01_raw_data folder, this step can be skipped
+
+zip_file <- "01_data/01_data_input/01_raw_data.zip"
+extract_dir <- "01_data/01_data_input"
+raw_data_dir <- file.path(extract_dir, "01_raw_data")
+
+if (!dir.exists(raw_data_dir)) {
+  
+  unzip(zip_file, exdir = extract_dir)
+  
+}
+
 # reading files ----
 
 plfs_paths <- list(
@@ -161,6 +175,28 @@ iwalk(plfs_list, ~ {
   write_parquet(.x, file.path("01_data/01_data_input/02_clean_data", subfolder, paste0(.y, ".parquet")))
   
 })
+
+# deleting extracted raw data ----
+
+# optional - remove the extracted raw data if it was extracted from 01_raw_data.zip for this run
+
+if (file.exists(zip_file)) {
+  
+  if (dir.exists(raw_data_dir)) {
+    
+    unlink(raw_data_dir, recursive = T, force = T)
+    
+  }
+  
+  macosx_dir <- file.path(extract_dir, "__MACOSX")
+  
+  if (dir.exists(macosx_dir)) {
+    
+    unlink(macosx_dir, recursive = T, force = T)
+    
+  }
+  
+}
 
 # cleaning environment ----
 
