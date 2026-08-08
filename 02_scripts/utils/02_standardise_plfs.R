@@ -1,6 +1,4 @@
 
-# dplyr - version ----
-
 standardise_plfs <- function(df, name) {
   
   df <- as_tibble(df)
