@@ -29,80 +29,30 @@ if (!dir.exists(raw_data_dir)) {
 
 plfs_paths <- list(
   
-  # calendar year file paths
-  
-  "2025" = "01_data/01_data_input/01_raw_data/plfs2025",
-  "2024" = "01_data/01_data_input/01_raw_data/plfs2024",
-  "2023" = "01_data/01_data_input/01_raw_data/plfs2023",
-  "2022" = "01_data/01_data_input/01_raw_data/plfs2022",
-  
   # agricultural year file paths
   
-  "2023_24" = "01_data/01_data_input/01_raw_data/plfs2023_24",
-  "2022_23" = "01_data/01_data_input/01_raw_data/plfs2022_23",
-  "2021_22" = "01_data/01_data_input/01_raw_data/plfs2021_22",
-  "2020_21" = "01_data/01_data_input/01_raw_data/plfs2020_21",
-  "2019_20" = "01_data/01_data_input/01_raw_data/plfs2019_20",
+  "2017_18" = "01_data/01_data_input/01_raw_data/plfs2017_18",
   "2018_19" = "01_data/01_data_input/01_raw_data/plfs2018_19",
-  "2017_18" = "01_data/01_data_input/01_raw_data/plfs2017_18"
+  "2019_20" = "01_data/01_data_input/01_raw_data/plfs2019_20",
+  "2020_21" = "01_data/01_data_input/01_raw_data/plfs2020_21",
+  "2021_22" = "01_data/01_data_input/01_raw_data/plfs2021_22",
+  "2022_23" = "01_data/01_data_input/01_raw_data/plfs2022_23",
+  "2023_24" = "01_data/01_data_input/01_raw_data/plfs2023_24",
+  
+  # calendar year file paths
+  
+  "2022" = "01_data/01_data_input/01_raw_data/plfs2022",
+  "2023" = "01_data/01_data_input/01_raw_data/plfs2023",
+  "2024" = "01_data/01_data_input/01_raw_data/plfs2024",
+  "2025" = "01_data/01_data_input/01_raw_data/plfs2025"
   
 ) 
 
 plfs_info <- list(
   
-  # calendar year file info
-  
-  "2025" = data.frame(level = c("hhv1", "perv1"),
-                      sheet = c(2, 3),
-                      start_row = c(1, 1),
-                      end_row = c(NA, NA),
-                      format = c("fwf", "fwf")),
-  
-  "2024" = data.frame(level = c("hhv1", "perv1"),
-                      sheet = c(3, 4),
-                      start_row = c(2, 2),
-                      end_row = c(NA, NA),
-                      format = c("fwf", "fwf")),
-  
-  "2023" = data.frame(level = c("hhv1", "perv1"), # there are no txt files for 2023
-                      sheet = c(1, 1),
-                      start_row = c(3, 47),
-                      end_row = c(41, 187),
-                      format = c("dta", "dta")),
-  
-  "2022" = data.frame(level = c("hhv1", "perv1"), # there are no txt files for 2022
-                      sheet = c(1, 1),
-                      start_row = c(3, 47),
-                      end_row = c(41, 187),
-                      format = c("dta", "dta")),
-  
   # agricultural year file info
   
-  "2023_24" = data.frame(level = c("hhv1", "perv1"),
-                         sheet = c(3, 4),
-                         start_row = c(1, 1),
-                         end_row = c(NA, NA),
-                         format = c("tsv", "tsv")),
-  
-  "2022_23" = data.frame(level = c("hhv1", "perv1"),
-                         sheet = c(1, 1),
-                         start_row = c(3, 82),
-                         end_row = c(40, 221),
-                         format = c("tsv", "tsv")),
-  
-  "2021_22" = data.frame(level = c("hhv1", "perv1"),
-                         sheet = c(1, 1),
-                         start_row = c(3, 82),
-                         end_row = c(40, 225),
-                         format = c("tsv", "tsv")),
-  
-  "2020_21" = data.frame(level = c("hhv1", "perv1"),
-                         sheet = c(1, 1),
-                         start_row = c(3, 82),
-                         end_row = c(40, 241),
-                         format = c("tsv", "tsv")),
-  
-  "2019_20" = data.frame(level = c("hhv1", "perv1"),
+  "2017_18" = data.frame(level = c("hhv1", "perv1"),
                          sheet = c(1, 1),
                          start_row = c(3, 39),
                          end_row = c(35, 168),
@@ -114,11 +64,61 @@ plfs_info <- list(
                          end_row = c(35, 168),
                          format = c("tsv", "tsv")),
   
-  "2017_18" = data.frame(level = c("hhv1", "perv1"),
+  "2019_20" = data.frame(level = c("hhv1", "perv1"),
                          sheet = c(1, 1),
                          start_row = c(3, 39),
                          end_row = c(35, 168),
-                         format = c("tsv", "tsv"))
+                         format = c("tsv", "tsv")),
+  
+  "2020_21" = data.frame(level = c("hhv1", "perv1"),
+                         sheet = c(1, 1),
+                         start_row = c(3, 82),
+                         end_row = c(40, 241),
+                         format = c("tsv", "tsv")),
+  
+  "2021_22" = data.frame(level = c("hhv1", "perv1"),
+                         sheet = c(1, 1),
+                         start_row = c(3, 82),
+                         end_row = c(40, 225),
+                         format = c("tsv", "tsv")),
+  
+  "2022_23" = data.frame(level = c("hhv1", "perv1"),
+                         sheet = c(1, 1),
+                         start_row = c(3, 82),
+                         end_row = c(40, 221),
+                         format = c("tsv", "tsv")),
+  
+  "2023_24" = data.frame(level = c("hhv1", "perv1"),
+                         sheet = c(3, 4),
+                         start_row = c(1, 1),
+                         end_row = c(NA, NA),
+                         format = c("tsv", "tsv")),
+  
+  # calendar year file info
+  
+  "2022" = data.frame(level = c("hhv1", "perv1"), # there are no txt files for 2022
+                      sheet = c(1, 1),
+                      start_row = c(3, 47),
+                      end_row = c(41, 187),
+                      format = c("dta", "dta")),
+  
+  "2023" = data.frame(level = c("hhv1", "perv1"), # there are no txt files for 2023
+                      sheet = c(1, 1),
+                      start_row = c(3, 47),
+                      end_row = c(41, 187),
+                      format = c("dta", "dta")),
+  
+  "2024" = data.frame(level = c("hhv1", "perv1"),
+                      sheet = c(3, 4),
+                      start_row = c(2, 2),
+                      end_row = c(NA, NA),
+                      format = c("fwf", "fwf")),
+  
+  "2025" = data.frame(level = c("hhv1", "perv1"),
+                      sheet = c(2, 3),
+                      start_row = c(1, 1),
+                      end_row = c(NA, NA),
+                      format = c("fwf", "fwf"))
   
 )
 
