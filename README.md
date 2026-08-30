@@ -5,7 +5,7 @@
 At present, this repository hosts R scripts to:  
 
 1) standardise and recode variables across survey rounds (both agricultural and calendar years), and save the cleaned and merged dataframes as Parquet files
-2) generate summary statistics reported in the PLFS publications (to be done)
+2) replicate summary statistics reported in the PLFS publications (to be done)
 
 ## Repository Structure
 
@@ -41,4 +41,4 @@ Within each round-specific folder, the files should follow this naming conventio
 
 ### `02_scripts/`
 
-Contains all the R scripts used to process the data files into survey year specific Parquet file.
+Contains all the R scripts used to process the data files into survey-year-specific Parquet files.
